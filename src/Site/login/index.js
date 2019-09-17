@@ -22,13 +22,12 @@ passport.deserializeUser(async (id, done) => {
 });
 
 routes.get('/', async (req, res) => {
-	const { rows } = await db.DaoToDb('SELECT * FROM admin.user')
-	res.send(rows);
+	res.send({});
 });
 
 routes.post('/', passport.authenticate('local'), (req, res) => {
-		res.send('logged as ' + req.user.user_name);
+		res.send({'logged': true});
 	}
-)
+);
 
 module.exports = routes;
