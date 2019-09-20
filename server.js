@@ -17,7 +17,7 @@ app.use(session({
 var corsOptions = {
     "credentials": true,
     "origin": "http://localhost:3052",
-    "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
+    "methods": "GET, POST",
     "preflightContinue": false,
     "optionsSuccessStatus": 204
 }

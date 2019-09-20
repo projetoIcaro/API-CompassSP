@@ -21,13 +21,20 @@ passport.deserializeUser(async (id, done) => {
 	done(null, userData);
 });
 
-routes.get('/', async (req, res) => {
-	res.send({});
+routes.use((req, res, next) => {
+	if (req.isAuthenticated()) {
+		res.end();
+	}
+	next();
+});
+
+routes.get('/', (req, res) => {
+	const isLogged = res.locals.isLogged;
+	res.send({isLogged});
 });
 
 routes.post('/', passport.authenticate('local'), (req, res) => {
-		res.send({'logged': true});
-	}
-);
+	res.send({});
+});
 
 module.exports = routes;
