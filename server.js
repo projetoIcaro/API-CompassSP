@@ -4,6 +4,7 @@ const morgan = require('morgan');
 const session = require('express-session')
 const FileStore = require('session-file-store')(session);
 const passport = require('passport');
+require('events').EventEmitter.setMaxListeners = 0;
 
 const app = express()
 

@@ -1,33 +1,12 @@
-const axios = require('axios')
+const axios = require('axios');
 
 module.exports = {
-    async Teste(req, res) {
-        let testeStr = `{"Informações do CPF": ${req.body.cpf}}`
-        return res.json(JSON.parse(testeStr))
-    },
-
-    async GetDataSiel(req, res) {
-        if(!req.body.cpf == "" && !req.body.nome == ""){
-
-            let cpf = req.body.cpf
-            let nome = req.body.nome
-            
-            await axios.post('http://localhost:3002/api/Siel/GetData', {
-                cpf: cpf,
-                nome: nome
-            })
-            .then((response) => {
-                return res.json(response.data)
-            })
-            .catch((error) => {
-                return res.json(JSON.parse(`{"error":${error}}`))
-            })
-        }
-        
-        return res.json(JSON.parse(`{"error":"CPF/Nome Vazio"}`))
-    }
-}
-
-
-
-
+	async GetDataSiel(req, res) {
+		console.log(req.query);
+		let cpf = req.query.cpf;
+		let nome = req.query.nome;
+		await axios.post('http://localhost:3002/api/Siel/GetData', {cpf, nome})
+		.then(res => res.data)
+		.catch(err => res.json({err}));
+	}
+};
