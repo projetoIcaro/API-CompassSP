@@ -33,7 +33,7 @@ routes.get("/DataExtraction/Jucesp", JucespDataExtraction.Teste);
 routes.get("/DataExtraction/Sivec", SivecDataExtraction.Teste);
 
 // Rota Geração PDF
-routes.get("/ResumeGenerator/PDF", ResumePDFGenerator.Generate);
+routes.post("/ResumeGenerator/PDF", ResumePDFGenerator.Generate);
 
 module.exports = routes;
 
