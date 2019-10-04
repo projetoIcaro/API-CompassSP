@@ -14,6 +14,7 @@ const InfosegDataExtraction = require('./Domains/Extractions/InfosegDataExtracti
 const JucespDataExtraction = require('./Domains/Extractions/JucespDataExtraction/JucespDataExtraction');
 const SielDataExtraction = require('./Domains/Extractions/SielDataExtraction/SielDataExtraction');
 const SivecDataExtraction = require('./Domains/Extractions/SivecDataExtraction/SivecDataExtraction');
+const ResumePDFGenerator = require('./Domains/FileGenerator/ResumePDFGenerator')
 
 // Rotas Em Uso
 routes.get("/DataExtraction/Siel", SielDataExtraction.GetDataSiel);
@@ -31,6 +32,8 @@ routes.get("/DataExtraction/Infoseg", InfosegDataExtraction.Teste);
 routes.get("/DataExtraction/Jucesp", JucespDataExtraction.Teste);
 routes.get("/DataExtraction/Sivec", SivecDataExtraction.Teste);
 
+// Rota Geração PDF
+routes.get("/ResumeGenerator/PDF", ResumePDFGenerator.Generate);
 
 module.exports = routes;
 
