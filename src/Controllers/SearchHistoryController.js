@@ -13,7 +13,7 @@ router.post('/register', async (req, res) => {
     }
 });
 
-router.get('/list', async (req, res) => {
+router.get('/history', async (req, res) => {
     try{
         const historys = await SearchHistory.find();
 
@@ -36,4 +36,4 @@ router.get('/listPaginated', async (req, res) => {
     }
 });
 
-module.exports = app => app.use('/SearchHistory', router);
+module.exports = app => app.use('/Investigation', router);
