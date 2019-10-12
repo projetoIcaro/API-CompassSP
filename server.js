@@ -30,6 +30,8 @@ app.use(express.urlencoded( { extended: true}));
 app.use(morgan('dev'));
 app.use(cors(corsOptions));
 
+require('./src/Controllers/UserController')(app);
+require('./src/Controllers/SearchHistoryController')(app);
 app.use("/api", require('./src/routes'))
 app.use("/", require('./src/Site/routes'))
 

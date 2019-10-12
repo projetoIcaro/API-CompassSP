@@ -5,7 +5,9 @@ const fs = require('fs');
 
 module.exports = {
 	async Generate(req, res) {
-		let arrayAPIS = req.body.APIS;
+		//let arrayAPIS = req.body.APIS;
+		let arrayAPIS = mock().APIS;
+
 		const doc = new PDFDocument();
 
 		res.setHeader('Content-disposition', 'attachment; filename="' + 'ExtratoResumo_' + moment().format('DDMMYYYY') + '.pdf' + '"')
@@ -37,6 +39,20 @@ module.exports = {
 		res.send({"Status":"sucesso"})
 	}
 };
+
+
+function mock(){
+	return JSON.parse(`{
+		"APIS" : [  { 
+									 "NomeAPI" : "API Siel"
+								  ,"DescricaoAPI": "API que coleta informações do site oficial do Siel"
+									,"Campos": { "Nome":"Gabriel", "Idade": "20"}
+								}
+								, { "NomeAPI" : "API InfoCrim"
+								  ,"DescricaoAPI": "API que coleta informações do site oficial do InfoCrim"} 
+						 ]
+	}`)
+}
 
 
 

@@ -4,3 +4,6 @@ sessions/*
 
 
 *.pdf
+
+configs.env
+
